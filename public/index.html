@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Members</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Club Members</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody id="members">
+      <tr>
+        <td colspan="3">Cargando...</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    async function cargarMiembros() {
+      try {
+        const response = await fetch("/api/members");
+        const members = await response.json();
+
+        const tbody = document.getElementById("members");
+
+        tbody.innerHTML = "";
+
+        members.forEach((member) => {
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+            <td>${member.nombre}</td>
+            <td>${member.email}</td>
+            <td>${member.status}</td>
+          `;
+
+          tbody.appendChild(row);
+        });
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    cargarMiembros();
+  </script>
+
+</body>
+</html>
