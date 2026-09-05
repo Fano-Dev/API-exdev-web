@@ -68,7 +68,7 @@ git clone <URL_DEL_REPOSITORIO>
 Entra en la carpeta:
 
 ```bash
-cd API-exdev
+cd API-exdev-web
 ```
 
 Instala las dependencias:
@@ -191,7 +191,7 @@ Esta configuración deberá revisarse para producción cuando la aplicación web
 ## Estructura del proyecto
 
 ```text
-API-exdev/
+API-exdev-web/
 ├── src/
 │   ├── index.ts
 │   └── notion.ts
@@ -201,7 +201,6 @@ API-exdev/
 ├── tsconfig.json
 ├── wrangler.jsonc
 ├── .gitignore
-├── .dev.vars
 └── README.md
 ```
 
